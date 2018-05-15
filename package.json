@@ -1,0 +1,53 @@
+{
+	"name": "monorepo-react-example",
+	"version": "0.0.0",
+	"private": true,
+	"author": "Ayoub Adib <adbayb@gmail.com>",
+	"license": "MIT",
+	"scripts": {
+		"precommit": "lint-staged",
+		"postinstall": "npm run bootstrap",
+		"commit": "./node_modules/.bin/git-cz",
+		"commitmsg": "cz-customizable-ghooks",
+		"format": "prettier --write **/*.{js,jsx,json,css}",
+		"lint": "eslint .",
+		"bootstrap": "npm i --prefix packages/shared && npm i --prefix applications/app1 && npm i --prefix applications/app2",
+		"start:app1": "npm start --prefix applications/app1",
+		"start:app2": "npm start --prefix applications/app2",		
+		"test:ci": "jest --findRelatedTests applications/app1/src/App.js",
+		"test:update": "jest --updateSnapshot",
+		"test:watch": "jest --watch",
+		"test": "jest"
+	},
+	"devDependencies": {
+		"@babel/core": "7.0.0-beta.44",
+		"babel-core": "7.0.0-bridge.0",
+		"babel-eslint": "8.2.3",
+		"babel-jest": "22.4.3",
+		"commitizen": "2.9.6",
+		"cz-customizable": "5.2.0",
+		"cz-customizable-ghooks": "1.5.0",
+		"eslint": "4.19.1",
+		"eslint-config-prettier": "2.9.0",
+		"eslint-plugin-jest": "21.15.0",
+		"eslint-plugin-prettier": "2.6.0",
+		"eslint-plugin-react": "7.7.0",
+		"husky": "0.14.3",
+		"jest": "22.4.3",
+		"lint-staged": "7.0.4",
+		"prettier": "1.12.0",
+		"regenerator-runtime": "0.11.1"
+	},
+	"engines": {
+		"node": ">=8.11.1",
+		"npm": ">=5.6.0"
+	},
+	"config": {
+		"commitizen": {
+			"path": "node_modules/cz-customizable"
+		},
+		"cz-customizable": {
+			"config": ".cz.config.js"
+		}
+	}
+}
